@@ -212,334 +212,268 @@ void pcDesligado() {
 }
 
 void apareceAgenda() { // Exibe a agenda abrindo
-
-  cout
-      << "          ________________________________________________________\n";
-  cout << "         /                                                         "
-          "#\n";
-  cout << "        |    ____________________________________________________   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   | █████╗  ██████╗ ███████╗███╗   ██╗██████╗  █████╗ |   "
-          " |\n";
-  cout << "        |   |██╔══██╗██╔════╝ ██╔════╝████╗  ██║██╔══██╗██╔══██╗|   "
-          " |\n";
-  cout << "        |   |███████║██║  ███╗█████╗  ██╔██╗ ██║██║  ██║███████║|   "
-          " |\n";
-  cout << "        |   |██╔══██║██║   ██║██╔══╝  ██║╚██╗██║██║  ██║██╔══██║|   "
-          " |\n";
-  cout << "        |   |██║  ██║╚██████╔╝███████╗██║ ╚████║██████╔╝██║  ██║|   "
-          " |\n";
-  cout << "        |   |╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝|   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |___________________________________________________|   "
-          " |\n";
-  cout << "        |                                                           "
-          " |\n";
-  cout << "        "
-          "#____________________________________________________________/\n";
-  cout << "                      #___________________________________/\n";
-  cout << "                   ___________________________________________\n";
-  cout
-      << "                _ -'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_\n";
-  cout << "             _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  "
-          ".-.-.`-_\n";
-  cout << "          _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-`__`. "
-          ".-.-.-.`-_\n";
-  cout << "       _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-----. "
-          ".-.-.-.-.`-_\n";
-  cout << "   _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. "
-          ".---.-.-.-.`-_\n";
-  cout << "   "
-          ":-------------------------------------------------------------------"
-          "------:\n";
-  cout << "   "
-          "`---._.-------------------------------------------------------------"
-          "._.---'\n";
+    cout << "          ________________________________________________________\n";
+    cout << "         /                                                         #\n";
+    cout << "        |    ____________________________________________________    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   | █████╗  ██████╗ ███████╗███╗   ██╗██████╗  █████╗ |    |\n";
+    cout << "        |   |██╔══██╗██╔════╝ ██╔════╝████╗  ██║██╔══██╗██╔══██╗|    |\n";
+    cout << "        |   |███████║██║  ███╗█████╗  ██╔██╗ ██║██║  ██║███████║|    |\n";
+    cout << "        |   |██╔══██║██║   ██║██╔══╝  ██║╚██╗██║██║  ██║██╔══██║|    |\n";
+    cout << "        |   |██║  ██║╚██████╔╝███████╗██║ ╚████║██████╔╝██║  ██║|    |\n";
+    cout << "        |   |╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝|    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |___________________________________________________|    |\n";
+    cout << "        |                                                            |\n";
+    cout << "        #____________________________________________________________/\n";
+    cout << "                      #___________________________________/\n";
+    cout << "                   ___________________________________________\n";
+    cout << "                _ -'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_\n";
+    cout << "             _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  .-.-.`-_\n";
+    cout << "          _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-`__`. .-.-.-.`-_\n";
+    cout << "       _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-----. .-.-.-.-.`-_\n";
+    cout << "   _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. .---.-.-.-.`-_\n";
+    cout << "   :-------------------------------------------------------------------------:\n";
+    cout << "   `---._.-------------------------------------------------------------._.---'\n";
 }
 
 void encerraPrograma() { // Exibe a tela de encerramento
-
-  cout
-      << "          ________________________________________________________\n";
-  cout << "         /                                                         "
-          "#\n";
-  cout << "        |    ____________________________________________________   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   | Programa encerrando em 3 segundos...              |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   | Professor: Rafael Ballottin Martins               |   "
-          " |\n";
-  cout << "        |   |                                                   |   "
-          " |\n";
-  cout << "        |   | Programadores: Daniel Henrique da Silva           |   "
-          " |\n";
-  cout << "        |   |                Lucas dos Santos Luckow            |   "
-          " |\n";
-  cout << "        |   |                Samuel Alfonso Werner Stuhlert     |   "
-          " |\n";
-  cout << "        |   |                Victor Menezes Ferreira            |   "
-          " |\n";
-  cout << "        |   |___________________________________________________|   "
-          " |\n";
-  cout << "        |                                                           "
-          " |\n";
-  cout << "        "
-          "#____________________________________________________________/\n";
-  cout << "                      #___________________________________/\n";
-  cout << "                   ___________________________________________\n";
-  cout
-      << "                _ -'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_\n";
-  cout << "             _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  "
-          ".-.-.`-_\n";
-  cout << "          _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-`__`. "
-          ".-.-.-.`-_\n";
-  cout << "       _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-----. "
-          ".-.-.-.-.`-_\n";
-  cout << "   _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. "
-          ".---.-.-.-.`-_\n";
-  cout << "   "
-          ":-------------------------------------------------------------------"
-          "------:\n";
-  cout << "   "
-          "`---._.-------------------------------------------------------------"
-          "._.---'\n";
+    cout << "          ________________________________________________________\n";
+    cout << "         /                                                         #\n";
+    cout << "        |    ____________________________________________________    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   | Programa encerrando em 3 segundos...              |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   | Professor: Rafael Ballottin Martins               |    |\n";
+    cout << "        |   |                                                   |    |\n";
+    cout << "        |   | Programadores: Daniel Henrique da Silva           |    |\n";
+    cout << "        |   |                Lucas dos Santos Luckow            |    |\n";
+    cout << "        |   |                Samuel Alfonso Werner Stuhlert     |    |\n";
+    cout << "        |   |                Victor Menezes Ferreira            |    |\n";
+    cout << "        |   |___________________________________________________|    |\n";
+    cout << "        |                                                            |\n";
+    cout << "        #____________________________________________________________/\n";
+    cout << "                      #___________________________________/\n";
+    cout << "                   ___________________________________________\n";
+    cout << "                _ -'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_\n";
+    cout << "             _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  .-.-.`-_\n";
+    cout << "          _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-`__`. .-.-.-.`-_\n";
+    cout << "       _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-----. .-.-.-.-.`-_\n";
+      cout << "   _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. .---.-.-.-.`-_\n";
+      cout << "   :-------------------------------------------------------------------------:\n";
+      cout << "   `---._.-------------------------------------------------------------._.---'\n";
 }
 
-void clear() {                // Função clear
-  cout << "\033[2J\033[1;1H"; // Limpa a tela no console ANSI
+// Função clear
+void clear() {                
+    cout << "\033[2J\033[1;1H"; // Limpa a tela no console ANSI
 }
 
-void delay(unsigned long t) { // Para controlar tempo de delay entre cada número
-                              // sorteado, t em segundos
-  sleep(t);
+// Para controlar tempo de delay entre cada número sorteado, t em segundos
+void delay(unsigned long t) { 
+    sleep(t);
 }
 
-void voltarMenu(int *pmenu) { // Para voltar ao menu
-  *pmenu = 0;
-  string aux;
-  cin.ignore();
-  cout << "\nDigite qualquer tecla para voltar ao menu\n";
-  getline(cin, aux);
+// Para voltar ao menu
+void voltarMenu(int *pmenu) { 
+    *pmenu = 0;
+    string aux;
+    cin.ignore();
+    cout << "\nDigite qualquer tecla para voltar ao menu\n";
+    getline(cin, aux);
 }
 
 int main() {
-  setlocale(LC_ALL, "Portuguese");
-  int ID;
-  string nome;
-  int *pmenu = new int; // Faz alocação de memoria para um inteiro e atribui o
-                        // endereço a um ponteiro pmenu
-  int *opcao = new int; // Faz alocação de memoria para um inteiro e atribui o
-                        // endereço a um ponteiro opcao
+    setlocale(LC_ALL, "Portuguese");
+    int ID;
+    string nome;
+    int *pmenu = new int; // Faz alocação de memoria para um inteiro e atribui o endereço a um ponteiro pmenu
+    int *opcao = new int; // Faz alocação de memoria para um inteiro e atribui o endereço a um ponteiro opcao
 
-  agenda<pessoal, 50>
-      agenda_pessoal; // Cria uma agenda pessoal com um máximo de 50 contatos
-  agenda<comercial, 50> agenda_comercial; // Cria uma agenda comercial com um
-                                          // máximo de 50 contatos
-  inicializa_agenda(agenda_pessoal);      // Inicializa a agenda pessoal
-  inicializa_agenda(agenda_comercial);    // Inicializa a agenda comercial
-  pessoal contato_pessoal; // Cria uma struct para armazenar um contato pessoal
-  comercial
-      contato_comercial; // Cria uma struct para armazenar um contato comercial
+    agenda<pessoal, 50> agenda_pessoal; // Cria uma agenda pessoal com um máximo de 50 contatos
+    agenda<comercial, 50> agenda_comercial; // Cria uma agenda comercial com um máximo de 50 contatos
+    inicializa_agenda(agenda_pessoal);      // Inicializa a agenda pessoal
+    inicializa_agenda(agenda_comercial);    // Inicializa a agenda comercial
+    pessoal contato_pessoal; // Cria uma struct para armazenar um contato pessoal
+    comercial contato_comercial; // Cria uma struct para armazenar um contato comercial
 
-  pcDesligado();
-  delay(3); // Exibe o pc desligado por 3 segundos
-  clear();
-  apareceAgenda();
-  delay(3); // Exibe a agenda abrindo por 3 segundos
-  clear();
-
-  do {
+    pcDesligado();
+    delay(3); // Exibe o pc desligado por 3 segundos
     clear();
-    menu();
-    cin >> *pmenu;
+    apareceAgenda();
+    delay(3); // Exibe a agenda abrindo por 3 segundos
+    clear();
 
-    switch (*pmenu) {
-    case 1: // Inserir um novo item na agenda
-      clear();
-      cout << "1. Agenda pessoal" << endl;
-      cout << "2. Agenda comercial" << endl;
-      cin >> *opcao;
-      if (*opcao == 1) { // Inserir um contato pessoal
+    do {
         clear();
-        preencher(contato_pessoal);
-        inserir(agenda_pessoal, contato_pessoal);
-        voltarMenu(pmenu);
-      } else if (*opcao == 2) { // Inserir um contato comercial
-        clear();
-        preencher(contato_comercial);
-        inserir(agenda_comercial, contato_comercial);
-        voltarMenu(pmenu);
-      } else { // Volta para o menu
-        clear();
-        voltarMenu(pmenu);
-      }
-      break;
+        menu();
+        cin >> *pmenu;
 
-    case 2: // Remover um item da agenda
-      clear();
-      cout << "1. Remover contato da agenda pessoal por ID" << endl;
-      cout << "2. Remover contato da agenda pessoal por nome" << endl;
-      cout << "3. Remover contato da agenda comercial por ID" << endl;
-      cout << "4. Remover contato da agenda comercial por nome" << endl;
-      cin >> *opcao;
-      if (*opcao == 1) { // Remover um contato da agenda pessoal por ID
-        clear();
-        cout << "Digite o ID: " << endl;
-        cin >> ID;
-        remover(agenda_pessoal, ID);
-        voltarMenu(pmenu);
-      } else if (*opcao == 2) { // Remover um contato da agenda pessoal por Nome
-        clear();
-        cin.ignore();
-        cout << "Digite o nome: " << endl;
-        getline(cin, nome);
-        remover(agenda_pessoal, pesquisaNome(agenda_pessoal, nome));
-        voltarMenu(pmenu);
-      } else if (*opcao == 3) { // Remover um contato da agenda comercial por ID
-        clear();
-        cout << "Digite o ID: " << endl;
-        cin >> ID;
-        remover(agenda_comercial, ID);
-        voltarMenu(pmenu);
-      } else if (*opcao ==
-                 4) { // Remover um contato da agenda comercial por Nome_empresa
-        clear();
-        cin.ignore();
-        cout << "Digite o nome: " << endl;
-        getline(cin, nome);
-        remover(agenda_comercial, pesquisaNome(agenda_comercial, nome));
-        voltarMenu(pmenu);
-      } else { // Volta para o menu
-        clear();
-        voltarMenu(pmenu);
-      }
-      break;
-
-    case 3: // Pesquisar um contato na agenda
-      clear();
-      cout << "1. Pesquisar um contato na agenda pessoal por ID" << endl;
-      cout << "2. Pesquisar um contato na agenda pessoal por nome" << endl;
-      cout << "3. Pesquisar um contato na agenda comercial por ID" << endl;
-      cout << "4. Pesquisar um contato na agenda comercial por nome" << endl;
-      cin >> *opcao;
-      if (*opcao == 1) { // Pesquisar um contato pessoal por ID
-        clear();
-        cout << "Digite o ID: " << endl;
-        cin >> ID;
-        pesquisar(agenda_pessoal, ID);
-        voltarMenu(pmenu);
-      } else if (*opcao == 2) { // Pesquisar um contato pessoal por Nome
-        clear();
-        cin.ignore();
-        cout << "Digite o nome: " << endl;
-        getline(cin, nome);
-        pesquisar(agenda_pessoal, pesquisaNome(agenda_pessoal, nome));
-        voltarMenu(pmenu);
-      } else if (*opcao == 3) { // Pesquisar um contato comercial por ID
-        clear();
-        cout << "Digite o ID: " << endl;
-        cin >> ID;
-        pesquisar(agenda_comercial, ID);
-        voltarMenu(pmenu);
-      } else if (*opcao ==
-                 4) { // Pesquisar um contato comercial por Nome_empresa
-        clear();
-        cin.ignore();
-        cout << "Digite o nome da empresa: " << endl;
-        getline(cin, nome);
-        pesquisar(agenda_comercial, pesquisaNome(agenda_comercial, nome));
-        voltarMenu(pmenu);
-      } else { // Volta para o menu
-        clear();
-        voltarMenu(pmenu);
-      }
-      break;
-
-    case 4: // Ordenar os contatos da agenda
-      clear();
-      cout << "1. Ordenar os contatos da agenda pessoal " << endl;
-      cout << "2. Ordenar os contatos da agenda comercial " << endl;
-      cin >> *opcao;
-      if (*opcao == 1) { // Ordenar os contatos da agenda pessoal por Nome
-        ordenar(agenda_pessoal);
-        clear();
-        voltarMenu(pmenu);
-      } else if (*opcao == 2) {
-        ordenar(agenda_comercial); // Ordenar os contatos da agenda comercial
-                                   // por Nome_empresa
-        clear();
-        voltarMenu(pmenu);
-      } else { // Volta para o menu
-        clear();
-        voltarMenu(pmenu);
-      }
-      break;
-
-    case 5: // Mostrar todos os itens da agenda
-      clear();
-      cout << "1. Mostrar todos os contatos da agenda pessoal" << endl;
-      cout << "2. Mostrar todos os contatos da agenda comercial" << endl;
-      cin >> *opcao;
-      if (*opcao == 1) {
-        clear();
-        if (agenda_pessoal.quantidade == 0) {
-          cout << "Não há contatos salvos na agenda pessoal." << endl << endl;
-          voltarMenu(pmenu);
-        } else {
-          cout << agenda_pessoal; // Exibe todos os contatos da agenda pessoal
-          voltarMenu(pmenu);
+        switch (*pmenu) {
+            case 1: // Inserir um novo item na agenda
+                clear();
+                cout << "1. Agenda pessoal" << endl;
+                cout << "2. Agenda comercial" << endl;
+                cin >> *opcao;
+                if (*opcao == 1) { // Inserir um contato pessoal
+                    clear();
+                    preencher(contato_pessoal);
+                    inserir(agenda_pessoal, contato_pessoal);
+                    voltarMenu(pmenu);
+                } else if (*opcao == 2) { // Inserir um contato comercial
+                    clear();
+                    preencher(contato_comercial);
+                    inserir(agenda_comercial, contato_comercial);
+                    voltarMenu(pmenu);
+                } else { // Volta para o menu
+                    clear();
+                    voltarMenu(pmenu);
+                }
+                break;
+    
+            case 2: // Remover um item da agenda
+                clear();
+                cout << "1. Remover contato da agenda pessoal por ID" << endl;
+                cout << "2. Remover contato da agenda pessoal por nome" << endl;
+                cout << "3. Remover contato da agenda comercial por ID" << endl;
+                cout << "4. Remover contato da agenda comercial por nome" << endl;
+                cin >> *opcao;
+                if (*opcao == 1) { // Remover um contato da agenda pessoal por ID
+                    clear();
+                    cout << "Digite o ID: " << endl;
+                    cin >> ID;
+                    remover(agenda_pessoal, ID);
+                    voltarMenu(pmenu);
+                } else if (*opcao == 2) { // Remover um contato da agenda pessoal por Nome
+                    clear();
+                    cin.ignore();
+                    cout << "Digite o nome: " << endl;
+                    getline(cin, nome);
+                    remover(agenda_pessoal, pesquisaNome(agenda_pessoal, nome));
+                    voltarMenu(pmenu);
+                } else if (*opcao == 3) { // Remover um contato da agenda comercial por ID
+                    clear();
+                    cout << "Digite o ID: " << endl;
+                    cin >> ID;
+                    remover(agenda_comercial, ID);
+                    voltarMenu(pmenu);
+                } else if (*opcao == 4) { // Remover um contato da agenda comercial por Nome_empresa
+                    clear();
+                    cin.ignore();
+                    cout << "Digite o nome: " << endl;
+                    getline(cin, nome);
+                    remover(agenda_comercial, pesquisaNome(agenda_comercial, nome));
+                    voltarMenu(pmenu);
+                } else { // Volta para o menu
+                    clear();
+                    voltarMenu(pmenu);
+                }
+                break;
+    
+            case 3: // Pesquisar um contato na agenda
+                clear();
+                cout << "1. Pesquisar um contato na agenda pessoal por ID" << endl;
+                cout << "2. Pesquisar um contato na agenda pessoal por nome" << endl;
+                cout << "3. Pesquisar um contato na agenda comercial por ID" << endl;
+                cout << "4. Pesquisar um contato na agenda comercial por nome" << endl;
+                cin >> *opcao;
+                if (*opcao == 1) { // Pesquisar um contato pessoal por ID
+                    clear();
+                    cout << "Digite o ID: " << endl;
+                    cin >> ID;
+                    pesquisar(agenda_pessoal, ID);
+                    voltarMenu(pmenu);
+                } else if (*opcao == 2) { // Pesquisar um contato pessoal por Nome
+                    clear();
+                    cin.ignore();
+                    cout << "Digite o nome: " << endl;
+                    getline(cin, nome);
+                    pesquisar(agenda_pessoal, pesquisaNome(agenda_pessoal, nome));
+                    voltarMenu(pmenu);
+                } else if (*opcao == 3) { // Pesquisar um contato comercial por ID
+                    clear();
+                    cout << "Digite o ID: " << endl;
+                    cin >> ID;
+                    pesquisar(agenda_comercial, ID);
+                    voltarMenu(pmenu);
+                } else if (*opcao == 4) { // Pesquisar um contato comercial por Nome_empresa
+                    clear();
+                    cin.ignore();
+                    cout << "Digite o nome da empresa: " << endl;
+                    getline(cin, nome);
+                    pesquisar(agenda_comercial, pesquisaNome(agenda_comercial, nome));
+                    voltarMenu(pmenu);
+                } else { // Volta para o menu
+                    clear();
+                    voltarMenu(pmenu);
+                }
+                break;
+    
+            case 4: // Ordenar os contatos da agenda
+                clear();
+                cout << "1. Ordenar os contatos da agenda pessoal " << endl;
+                cout << "2. Ordenar os contatos da agenda comercial " << endl;
+                cin >> *opcao;
+                if (*opcao == 1) { // Ordenar os contatos da agenda pessoal por Nome
+                    ordenar(agenda_pessoal);
+                    clear();
+                    voltarMenu(pmenu);
+                } else if (*opcao == 2) {
+                    ordenar(agenda_comercial); // Ordenar os contatos da agenda comercial por Nome_empresa
+                    clear();
+                    voltarMenu(pmenu);
+                } else { // Volta para o menu
+                    clear();
+                    voltarMenu(pmenu);
+                }
+                break;
+    
+            case 5: // Mostrar todos os itens da agenda
+                clear();
+                cout << "1. Mostrar todos os contatos da agenda pessoal" << endl;
+                cout << "2. Mostrar todos os contatos da agenda comercial" << endl;
+                cin >> *opcao;
+                if (*opcao == 1) {
+                    clear();
+                    if (agenda_pessoal.quantidade == 0) {
+                        cout << "Não há contatos salvos na agenda pessoal." << endl << endl;
+                        voltarMenu(pmenu);
+                    } else {
+                        cout << agenda_pessoal; // Exibe todos os contatos da agenda pessoal
+                        voltarMenu(pmenu);
+                    }
+                } else if (*opcao == 2) {
+                    clear();
+                    if (agenda_comercial.quantidade == 0) {
+                        cout << "Não há contatos salvos na agenda comercial." << endl << endl;
+                        voltarMenu(pmenu);
+                    } else {
+                        cout << agenda_comercial; // Exibe todos os contatos da agenda comercial
+                        voltarMenu(pmenu);
+                    }
+                }
+                break;
         }
-      } else if (*opcao == 2) {
-        clear();
-        if (agenda_comercial.quantidade == 0) {
-          cout << "Não há contatos salvos na agenda comercial." << endl << endl;
-          voltarMenu(pmenu);
-        } else {
-          cout << agenda_comercial; // Exibe todos os contatos da agenda
-                                    // comercial
-          voltarMenu(pmenu);
-        }
-      }
-      break;
-    }
-  } while (*pmenu != 6); // Continua o loop até que a opção 6 (Encerrar o
-                         // programa) seja escolhida
-  clear();
-  encerraPrograma();
-  delay(3); // Exibe a tela de saida por 3 segundos
-  clear();
-  pcDesligado();
-  delay(3); // Exibe o pc desligado por 3 segundos
-  clear();
+    } while (*pmenu != 6); // Continua o loop até que a opção 6 (Encerrar o programa) seja escolhida
+    clear();
+    encerraPrograma();
+    delay(3); // Exibe a tela de saida por 3 segundos
+    clear();
+    pcDesligado();
+    delay(3); // Exibe o pc desligado por 3 segundos
+    clear();
 
-  delete pmenu; // Libera a memória alocada dinamicamente para o ponteiro pmenu
-  delete opcao; // Libera a memória alocada dinamicamente para o ponteiro opcao
+    delete pmenu; // Libera a memória alocada dinamicamente para o ponteiro pmenu
+    delete opcao; // Libera a memória alocada dinamicamente para o ponteiro opcao
 
-  return 0; // Encerra o programa
+    return 0; // Encerra o programa
 }
