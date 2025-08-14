@@ -301,10 +301,10 @@ int main() {
 
     agenda<pessoal, 50> agenda_pessoal; // Cria uma agenda pessoal com um máximo de 50 contatos
     agenda<comercial, 50> agenda_comercial; // Cria uma agenda comercial com um máximo de 50 contatos
-    inicializa_agenda(agenda_pessoal);      // Inicializa a agenda pessoal
-    inicializa_agenda(agenda_comercial);    // Inicializa a agenda comercial
-    pessoal contato_pessoal; // Cria uma struct para armazenar um contato pessoal
-    comercial contato_comercial; // Cria uma struct para armazenar um contato comercial
+    contactBook_boot(agenda_pessoal);      // Inicializa a agenda pessoal
+    contactBook_boot(agenda_comercial);    // Inicializa a agenda comercial
+    personal contato_pessoal; // Cria uma struct para armazenar um contato pessoal
+    business contato_comercial; // Cria uma struct para armazenar um contato comercial
 
     pcDesligado();
     delay(3); // Exibe o pc desligado por 3 segundos
@@ -327,12 +327,12 @@ int main() {
                 if (*opcao == 1) { // Inserir um contato pessoal
                     clear();
                     preencher(contato_pessoal);
-                    inserir(agenda_pessoal, contato_pessoal);
+                    contactBook_insert(agenda_pessoal, contato_pessoal);
                     voltarMenu(pmenu);
                 } else if (*opcao == 2) { // Inserir um contato comercial
                     clear();
                     preencher(contato_comercial);
-                    inserir(agenda_comercial, contato_comercial);
+                    contactBook_insert(agenda_comercial, contato_comercial);
                     voltarMenu(pmenu);
                 } else { // Volta para o menu
                     clear();
@@ -351,27 +351,27 @@ int main() {
                     clear();
                     cout << "Digite o ID: " << endl;
                     cin >> ID;
-                    remover(agenda_pessoal, ID);
+                    contactBook_delete(agenda_pessoal, ID);
                     voltarMenu(pmenu);
                 } else if (*opcao == 2) { // Remover um contato da agenda pessoal por Nome
                     clear();
                     cin.ignore();
                     cout << "Digite o nome: " << endl;
                     getline(cin, nome);
-                    remover(agenda_pessoal, pesquisaNome(agenda_pessoal, nome));
+                    contactBook_delete(agenda_pessoal, pesquisaNome(agenda_pessoal, nome));
                     voltarMenu(pmenu);
                 } else if (*opcao == 3) { // Remover um contato da agenda comercial por ID
                     clear();
                     cout << "Digite o ID: " << endl;
                     cin >> ID;
-                    remover(agenda_comercial, ID);
+                    contactBook_delete(agenda_comercial, ID);
                     voltarMenu(pmenu);
                 } else if (*opcao == 4) { // Remover um contato da agenda comercial por Nome_empresa
                     clear();
                     cin.ignore();
                     cout << "Digite o nome: " << endl;
                     getline(cin, nome);
-                    remover(agenda_comercial, pesquisaNome(agenda_comercial, nome));
+                    contactBook_delete(agenda_comercial, pesquisaNome(agenda_comercial, nome));
                     voltarMenu(pmenu);
                 } else { // Volta para o menu
                     clear();
@@ -424,11 +424,11 @@ int main() {
                 cout << "2. Ordenar os contatos da agenda comercial " << endl;
                 cin >> *opcao;
                 if (*opcao == 1) { // Ordenar os contatos da agenda pessoal por Nome
-                    ordenar(agenda_pessoal);
+                    contactBook_sort(agenda_pessoal);
                     clear();
                     voltarMenu(pmenu);
                 } else if (*opcao == 2) {
-                    ordenar(agenda_comercial); // Ordenar os contatos da agenda comercial por Nome_empresa
+                    contactBook_sort(agenda_comercial); // Ordenar os contatos da agenda comercial por Nome_empresa
                     clear();
                     voltarMenu(pmenu);
                 } else { // Volta para o menu
