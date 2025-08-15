@@ -34,7 +34,7 @@ bool contactBook_boot(contactBook<T, MAX> &cb) {
 
 // Insert new contact
 template <typename T, int MAX> 
-bool contactBook_insert(contactBook<T, MAX> &cb, T dado) {
+bool contactBook_insert(contactBook<T, MAX> &cb, const T &dado) {
     if (cb.counter < MAX) { // CHeck if contact book is not full
         cb.items[cb.counter] = dado; // Insert
         cb.counter++;
@@ -48,13 +48,14 @@ bool contactBook_insert(contactBook<T, MAX> &cb, T dado) {
 template <typename T, int MAX> 
 bool contactBook_delete(contactBook<T, MAX> &cb, int ID) {
     int aux = -1; // Auxiliary variable to detect if contact was found
-    for (int i = 0; i < cb.counter or aux == i; i++) {
+    for (int i = 0; i < cb.counter; i++) {
         if (ID == cb.items[i].ID) {
             aux = i; // If found, saves contact position
+            break;
         }
     }
     if (aux != -1) {
-        for (int i = aux; i < cb.counter; i++) {
+        for (int i = aux; i < cb.counter -1; i++) {
             cb.items[i] = cb.items[i + 1]; // Swift all contacts to the left
         }
         cb.counter--; 
