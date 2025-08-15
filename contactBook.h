@@ -21,7 +21,7 @@ struct personal  {
 
 // Business contacts struct
 struct business { 
-    int ID, CNPJ, companyPhone;
+    int ID, CRN, companyPhone; // CRN = Company Registration Number
     string companyName;
 };
 
