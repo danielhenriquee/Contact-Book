@@ -1,9 +1,4 @@
 // Daniel Henrique da Silva, Lucas dos Santos Luckow, Samuel Alfonso Werner Stuhlert, Victor Menezes Ferreira
-
-#include <iostream>
-#include <locale.h>
-#include <time.h>
-#include <unistd.h>
 using namespace std;
 
 // Generic contactBook struct with a maximum size
