@@ -38,10 +38,8 @@ bool contactBook_insert(contactBook<T, MAX> &cb, T dado) {
     if (cb.counter < MAX) { // CHeck if contact book is not full
         cb.items[cb.counter] = dado; // Insert
         cb.counter++;
-        cout << "\nContact added successfully!" << endl;
         return true;
     } else {
-        cout << "Unable to add a new contact, your contact book is full!" << endl;
         return false;
     }
 }
@@ -60,10 +58,8 @@ bool contactBook_delete(contactBook<T, MAX> &cb, int ID) {
             cb.items[i] = cb.items[i + 1]; // Swift all contacts to the left
         }
         cb.counter--; 
-        cout << "Contact successfully deleted.\n\n";
         return true;
     } else {
-        cout << "Contact not found.\n\n";
         return false;
     }
 }
