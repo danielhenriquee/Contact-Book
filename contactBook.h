@@ -15,7 +15,7 @@ struct contactBook {
 
 // Personal contacts struct
 struct personal  { 
-    int ID, SSN, mobilePhone;
+    int ID, SSN, mobilePhone; // SSN = Social Security Number
     string name;
 };
 
