@@ -1,4 +1,5 @@
 // Daniel Henrique da Silva, Lucas dos Santos Luckow, Samuel Alfonso Werner Stuhlert, Victor Menezes Ferreira
+
 using namespace std;
 
 // Generic contactBook struct with a maximum size
