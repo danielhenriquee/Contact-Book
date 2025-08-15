@@ -7,7 +7,7 @@
 using namespace std;
 
 // Operator overload to print all personal contacts
-ostream &operator << (ostream &os, contactBook<personal, 50> cb) { 
+ostream &operator << (ostream &os, const contactBook<personal, 50> &cb) { 
     for (int i = 0; i < cb.counter; i++) {
         os << "ID: " << cb.items[i].ID << endl;
         os << "Name: " << cb.items[i].name << endl;
@@ -19,7 +19,7 @@ ostream &operator << (ostream &os, contactBook<personal, 50> cb) {
 }
 
 // Operator overload to print all business contacts
-ostream &operator << (ostream &os, contactBook<business, 50> cb) { 
+ostream &operator << (ostream &os, const contactBook<business, 50> &cb) { 
     for (int i = 0; i < cb.counter; i++) {
         os << "ID: " << cb.items[i].ID << endl;
         os << "Company name: " << cb.items[i].companyName << endl;
@@ -46,71 +46,41 @@ bool operator < (business c1, business c2) {
 
 // Fill in contact information for personal contact book
 void fill(personal &c) { 
-    for (int i = -1; i < 0;) {
-        cout << "Type the ID: " << endl;
+    do {
+        cout << "Type the ID (must be a natural number): ";
         cin >> c.ID;
-        i++;
-        if (c.ID <= 0) { 
-            cout << "ID invalid, must be a natural number !=0" << endl;
-            i = -1;
-        }
-    }
+    } while (c.ID <= 0);
 
-    for (int i = -1; i < 0;) {
-        cout << "Type the SSN: " << endl;
+    do {
+        cout << "Type the SSN (must be a natural number): ";
         cin >> c.SSN;
-        i++;
-        if (c.SSN <= 0) {
-            cout << "SSN invalid, must be a natural number !=0" << endl;
-            i = -1;
-        }
-    }
+    } while (c.SSN <= 0);
 
-    for (int i = -1; i < 0;) {
-        cout << "Type the mobile phone number: " << endl;
+    do {
+        cout << "Type the mobile phone number (must be a natural number): ";
         cin >> c.mobilePhone;
-        i++;
-        if (c.mobilePhone <= 0) {
-            cout << "Mobile phone number invalid, must be a natural number !=0" << endl;
-            i = -1;
-        }
-    }
+    } while (c.mobilePhone <= 0);
 
     cout << "Type the contact name: " << endl;
-    cin >> c.Name;
+    cin >> c.name;
 }
 
 // Fill in contact information for business contact book
 void fill(business &c) { 
-    for (int i = -1; i < 0;) {
-        cout << "Type the ID: " << endl;
+    do {
+        cout << "Type the ID (must be a natural number): ";
         cin >> c.ID;
-        i++;
-        if (c.ID <= 0) {
-            cout << "ID invalid, must be a natural number !=0" << endl;
-            i = -1;
-        }
-    }
+    } while (c.ID <= 0);
 
-    for (int i = -1; i < 0;) {
-        cout << "Type the CRN: " << endl;
+    do {
+        cout << "Type the CRN (must be a natural number): ";
         cin >> c.CRN;
-        i++;
-        if (c.CRN <= 0) { 
-            cout << "CRN invalid, must be a natural number !=0" << endl;
-            i = -1;
-        }
-    }
+    } while (c.CRN <= 0);
 
-    for (int i = -1; i < 0;) { 
-        cout << "Type the company phone number: " << endl;
+    do {
+        cout << "Type the company phone number (must be a natural number): ";
         cin >> c.companyPhone;
-        i++;
-        if (c.companyPhone <= 0) {
-            cout << "Company phone number invalid, must be a natural number !=0" << endl;
-            i = -1;
-        }
-    }
+    } while (c.companyPhone <= 0);
 
     cout << "Type the company name: " << endl;
     cin >> c.companyName;
@@ -135,37 +105,21 @@ int searchByName(contactBook<business, 50> &cb, string companyName) {
 }
 
 // Function to search a personal contact by ID
-void searchByID(contactBook<personal, 50> &cb, int ID) { 
-    int aux = -1;
+int searchByID(contactBook<personal, 50> &cb, int ID) { 
     for (int i = 0; i < cb.counter; i++) {
-        if (ID == cb.items[i].ID) {dd
-            aux = i;
-            cout << "Contact found! " << endl;
-            cout << "ID: " << cb.items[aux].ID << endl;
-            cout << "Name: " << cb.items[aux].name << endl;
-            cout << "SSN: " << cb.items[aux].SSN << endl;
-            cout << "Mobile phone number: " << cb.items[aux].mobilePhone << endl;
-        } else {
-            cout << "Contact not found";
-        }
+        if (ID == cb.items[i].ID)
+            return i;
     }
+    return -1;
 }
 
 // Function to search a business contact by ID
-void searchByID(contactBook<business, 50> &cb, int ID) { 
-    int aux = -1;
+int searchByID(contactBook<business, 50> &cb, int ID) { 
     for (int i = 0; i < cb.counter; i++) {
-        if (ID == cb.items[i].ID) {
-            aux = i;
-            cout << "Contact found! " << endl;
-            cout << "ID: " << cb.items[aux].ID << endl;
-            cout << "Company name: " << cb.items[aux].companyName << endl;
-            cout << "CRN: " << cb.items[aux].CRN << endl;
-            cout << "Company phone number: " << cb.items[aux].companyPhone << endl;
-        } else {
-            cout << "Contact not found";
-        }
+        if (ID == cb.items[i].ID)
+            return i;
     }
+    return -1;
 }
 
 // Print menu
@@ -380,7 +334,7 @@ int main() {
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    if (contactBook_delete(businessCB, searchByName(personalCB, name)))
+                    if (contactBook_delete(businessCB, searchByName(businessCB, name)))
                         cout << "Contact successfully deleted.\n\n";
                     else
                         cout << "Contact not found.\n\n";
@@ -402,27 +356,59 @@ int main() {
                     clear();
                     cout << "Type the ID: " << endl;
                     cin >> ID;
-                    searchByID(personalCB, ID);
+                    int idx = searchByID(personalCB, ID);
+                    if (idx != -1) {
+                        cout << "Contact found!\n";
+                        cout << "ID: " << personalCB.items[idx].ID << endl;
+                        cout << "Name: " << personalCB.items[idx].name << endl;
+                        cout << "SSN: " << personalCB.items[idx].SSN << endl;
+                        cout << "Mobile phone number: " << personalCB.items[idx].mobilePhone << endl;
+                    } else
+                        cout << "Contact not found\n";
                     back2menu(pmenu);
                 } else if (*option == 2) { // Search personal contact by name
                     clear();
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    searchByID(personalCB, searchByName(personalCB, name));
+                    int idx = searchByID(personalCB, searchByName(personalCB, name));
+                    if (idx != -1) {
+                        cout << "Contact found!\n";
+                        cout << "ID: " << personalCB.items[idx].ID << endl;
+                        cout << "Name: " << personalCB.items[idx].name << endl;
+                        cout << "SSN: " << personalCB.items[idx].SSN << endl;
+                        cout << "Mobile phone number: " << personalCB.items[idx].mobilePhone << endl;
+                    } else
+                        cout << "Contact not found\n";
                     back2menu(pmenu);
                 } else if (*option == 3) { // Search business contact by ID
                     clear();
                     cout << "Type the ID: " << endl;
                     cin >> ID;
-                    searchByID(businessCB, ID);
+                    int idx = searchByID(businessCB, ID);
+                    if (idx != -1) {
+                        cout << "Contact found!\n";
+                        cout << "ID: " << businessCB.items[idx].ID << endl;
+                        cout << "Company name: " << businessCB.items[idx].companyName << endl;
+                        cout << "CRN: " << businessCB.items[idx].CRN << endl;
+                        cout << "Company phone number: " << businessCB.items[idx].companyPhone << endl;
+                    } else
+                        cout << "Contact not found\n";
                     back2menu(pmenu);
                 } else if (*option == 4) { // Search business contact by name
                     clear();
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    searchByID(businessCB, searchByName(businessCB, Name));
+                    int idx = searchByID(businessCB, searchByName(businessCB, name));
+                    if (idx != -1) {
+                        cout << "Contact found!\n";
+                        cout << "ID: " << businessCB.items[idx].ID << endl;
+                        cout << "Company name: " << businessCB.items[idx].companyName << endl;
+                        cout << "CRN: " << businessCB.items[idx].CRN << endl;
+                        cout << "Company phone number: " << businessCB.items[idx].companyPhone << endl;
+                    } else
+                        cout << "Contact not found\n";
                     back2menu(pmenu);
                 } else {
                     clear();
