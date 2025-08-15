@@ -322,12 +322,18 @@ int main() {
                 if (*option == 1) { // Insert personal contact
                     clear();
                     fill(personalContact);
-                    contactBook_insert(personalCB, personalContact);
+                    if (contactBook_insert(personalCB, personalContact))
+                        cout << "\nContact added successfully!" << endl;
+                    else
+                        cout << "Unable to add a new contact, your contact book is full!" << endl;
                     back2menu(pmenu);
                 } else if (*option == 2) { // Insert business contact
                     clear();
                     fill(businessContact);
-                    contactBook_insert(businessCB, businessContact);
+                    if (contactBook_insert(businessCB, businessContact))
+                        cout << "\nContact added successfully!" << endl;
+                    else
+                        cout << "Unable to add a new contact, your contact book is full!" << endl;
                     back2menu(pmenu);
                 } else {
                     clear();
@@ -346,27 +352,39 @@ int main() {
                     clear();
                     cout << "Type the ID: " << endl;
                     cin >> ID;
-                    contactBook_delete(personalCB, ID);
+                    if (contactBook_delete(personalCB, ID))
+                        cout << "Contact successfully deleted.\n\n";
+                    else
+                        cout << "Contact not found.\n\n";
                     back2menu(pmenu);
                 } else if (*option == 2) { // Remove personal contact by name
                     clear();
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    contactBook_delete(personalCB, searchByName(personalCB, Name));
+                    if (contactBook_delete(personalCB, name))
+                        cout << "Contact successfully deleted.\n\n";
+                    else
+                        cout << "Contact not found.\n\n";
                     back2menu(pmenu);
                 } else if (*option == 3) { // Remove business contact by ID
                     clear();
                     cout << "Type the ID: " << endl;
                     cin >> ID;
-                    contactBook_delete(businessCB, ID);
+                    if (contactBook_delete(businessCB, ID))
+                        cout << "Contact successfully deleted.\n\n";
+                    else
+                        cout << "Contact not found.\n\n";
                     back2menu(pmenu);
                 } else if (*option == 4) { // Remove business contact by name
                     clear();
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    contactBook_delete(businessCB, searchByName(businessCB, Name));
+                    if (contactBook_delete(businessCB, name))
+                        cout << "Contact successfully deleted.\n\n";
+                    else
+                        cout << "Contact not found.\n\n";
                     back2menu(pmenu);
                 } else {
                     clear();
