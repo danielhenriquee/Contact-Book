@@ -1,5 +1,4 @@
-// Daniel Henrique da Silva, Lucas dos Santos Luckow, Samuel Alfonso Werner
-// Stuhlert, Victor Menezes Ferreira
+// Daniel Henrique da Silva, Lucas dos Santos Luckow, Samuel Alfonso Werner Stuhlert, Victor Menezes Ferreira
 #include "contactBook.h"
 #include <iostream>
 #include <locale.h>
@@ -7,180 +6,180 @@
 #include <unistd.h>
 using namespace std;
 
-// Sobrecarga de operador para exibir todos os itens da agenda pessoal
-ostream &operator << (ostream &os, agenda<pessoal, 50> ag) { 
-    for (int i = 0; i < ag.quantidade; i++) { // laço que mostra os itens da agenda pessoal
-        os << "ID: " << ag.itens[i].ID << endl;
-        os << "Name: " << ag.itens[i].name << endl;
-        os << "SSN: " << ag.itens[i].SSN << endl;
-        os << "Celular: " << ag.itens[i].Celular << endl;
+// Operator overload to print all personal contacts
+ostream &operator << (ostream &os, contactBook<personal, 50> cb) { 
+    for (int i = 0; i < cb.counter; i++) {
+        os << "ID: " << cb.items[i].ID << endl;
+        os << "Name: " << cb.items[i].name << endl;
+        os << "SSN: " << cb.items[i].SSN << endl;
+        os << "Mobile phone: " << cb.items[i].mobilePhone << endl;
         cout << endl;
     }
     return os;
 }
 
-// Sobrecarga de operador para exibir todos os itens da agenda comercial
-ostream &operator << (ostream &os, agenda<comercial, 50> ag) { 
-    for (int i = 0; i < ag.quantidade; i++) { // laço que mostra os itens da agenda comercial
-        os << "ID: " << ag.itens[i].ID << endl;
-        os << "Name da Empresa: " << ag.itens[i].Name_empresa << endl;
-        os << "CNPJ: " << ag.itens[i].CNPJ << endl;
-        os << "Telefone Comercial: " << ag.itens[i].Tel_comercial << endl;
+// Operator overload to print all business contacts
+ostream &operator << (ostream &os, contactBook<business, 50> cb) { 
+    for (int i = 0; i < cb.counter; i++) {
+        os << "ID: " << cb.items[i].ID << endl;
+        os << "Company name: " << cb.items[i].companyName << endl;
+        os << "CRN: " << cb.items[i].CRN << endl;
+        os << "Company phone: " << cb.items[i].companyPhone << endl;
         cout << endl;
     }
     return os;
 }
 
-// Sobrecarga de operador para comparar contatos pessoais por Name
-bool operator < (pessoal c1, pessoal c2) { 
-    if (c1.Name < c2.Name) // Retorna true se Name de c1 for menor (vem antes na ordem alfabética) que Name de c2
+// Operator overloading to compare personal contacts by name
+bool operator < (personal c1, personal c2) { 
+    if (c1.name < c2.name)
         return true; 
     return false;
 }
 
-// Sobrecarga de operador para comparar contatos comerciais por Name_empresa
-bool operator < (comercial c1, comercial c2) { 
-    if (c1.Name_empresa < c2.Name_empresa)
-        return true; // Retorna true se Name_empresa de c1 for menor (vem antes na ordem alfabética) que Name_empresa de c2
+// Operator overloading to compare business contacts by company name
+bool operator < (business c1, business c2) { 
+    if (c1.companyName < c2.companyName)
+        return true;
     return false;
 }
 
-// Preencher contato para agenda pessoal
-void preencher(pessoal &contato) { 
+// Fill in contact information for personal contact book
+void fill(personal &c) { 
     for (int i = -1; i < 0;) {
-        cout << "Digite o ID: " << endl;
-        cin >> contato.ID;
+        cout << "Type the ID: " << endl;
+        cin >> c.ID;
         i++;
-        if (contato.ID <= 0) { // condição que impede o ID inserido pelo usuario seja invalido
-            cout << "ID inválido, o ID deve ser um número natural !=0" << endl;
+        if (c.ID <= 0) { 
+            cout << "ID invalid, must be a natural number !=0" << endl;
             i = -1;
         }
     }
 
     for (int i = -1; i < 0;) {
-        cout << "Digite o SSN: " << endl;
-        cin >> contato.SSN;
+        cout << "Type the SSN: " << endl;
+        cin >> c.SSN;
         i++;
-        if (contato.SSN <= 0) { // condição que impede o SSN inserido pelo usuario seja invalido
-            cout << "SSN inválido, o SSN deve ser um número natural !=0" << endl;
+        if (c.SSN <= 0) {
+            cout << "SSN invalid, must be a natural number !=0" << endl;
             i = -1;
         }
     }
 
     for (int i = -1; i < 0;) {
-        cout << "Digite o número do celular: " << endl;
-        cin >> contato.Celular;
+        cout << "Type the mobile phone number: " << endl;
+        cin >> c.mobilePhone;
         i++;
-        if (contato.Celular <= 0) { // condição que impede que o Celular inserido pelo usuario seja invalido
-            cout << "Numéro do celular inválido, o número do celular deve ser um número natural !=0" << endl;
+        if (c.mobilePhone <= 0) {
+            cout << "Mobile phone number invalid, must be a natural number !=0" << endl;
             i = -1;
         }
     }
 
-    cout << "Digite o Name: " << endl;
-    cin >> contato.Name;
+    cout << "Type the contact name: " << endl;
+    cin >> c.Name;
 }
 
-// Preencher contato para agenda comercial
-void preencher(comercial &contato) { 
+// Fill in contact information for business contact book
+void fill(business &c) { 
     for (int i = -1; i < 0;) {
-        cout << "Digite o ID: " << endl;
-        cin >> contato.ID;
+        cout << "Type the ID: " << endl;
+        cin >> c.ID;
         i++;
-        if (contato.ID <= 0) { // condição que impede que o ID inserido pelo usuario seja invalido
-            cout << "ID inválido, o ID deve ser um número natural !=0" << endl;
+        if (c.ID <= 0) {
+            cout << "ID invalid, must be a natural number !=0" << endl;
             i = -1;
         }
     }
 
     for (int i = -1; i < 0;) {
-        cout << "Digite o CNPJ: " << endl;
-        cin >> contato.CNPJ;
+        cout << "Type the CRN: " << endl;
+        cin >> c.CRN;
         i++;
-        if (contato.CNPJ <= 0) { // condição que impede que o CNPJ inserido pelo usuario seja invalido
-            cout << "CNPJ inválido, o CNPJ deve ser um número natural !=0" << endl;
+        if (c.CRN <= 0) { 
+            cout << "CRN invalid, must be a natural number !=0" << endl;
             i = -1;
         }
     }
 
-    for (int i = -1; i < 0;) { // condição que impede que o Telefone Comercial inserido pelo usuario seja invalido
-        cout << "Digite o número do telefone comercial: " << endl;
-        cin >> contato.Tel_comercial;
+    for (int i = -1; i < 0;) { 
+        cout << "Type the company phone number: " << endl;
+        cin >> c.companyPhone;
         i++;
-        if (contato.Tel_comercial <= 0) {
-            cout << "Telefone comercial inválido, o telefone comercial deve ser um número natural !=0" << endl;
+        if (c.companyPhone <= 0) {
+            cout << "Company phone number invalid, must be a natural number !=0" << endl;
             i = -1;
         }
     }
 
-    cout << "Digite o Name da empresa: " << endl;
-    cin >> contato.Name_empresa;
+    cout << "Type the company name: " << endl;
+    cin >> c.companyName;
 }
 
-// Função para pesquisar um contato pessoal por Name
-int pesquisaName(agenda<pessoal, 50> &ag, string Name) { 
-    for (int i = 0; i < ag.quantidade; i++) {
-        if (ag.itens[i].Name == Name)
-            return ag.itens[i].ID; // Se encontrado, retorna o ID do contato
+// Function to search for a personal contact by name
+int searchByName(contactBook<personal, 50> &cb, string name) { 
+    for (int i = 0; i < cb.counter; i++) {
+        if (cb.items[i].name == name)
+            return cb.items[i].ID; // If found, return contact ID
     }
-    return -1; // Retorna -1 para indicar que o contato não foi encontrado.
+    return -1; // If not found, returns -1
 }
 
-// Função para pesquisar um contato comercial por Name_empresa
-int pesquisaName(agenda<comercial, 50> &ag, string Name_empresa) { 
-    for (int i = 0; i < ag.quantidade; i++) {
-        if (ag.itens[i].Name_empresa == Name_empresa)
-            return ag.itens[i].ID; //  Se encontrado, retorna o ID do contato
+// Function to search for a business contact by name
+int searchByName(contactBook<business, 50> &cb, string companyName) { 
+    for (int i = 0; i < cb.counter; i++) {
+        if (cb.items[i].companyName == companyName)
+            return cb.items[i].ID; // If found, return company ID
     }
-    return -1; // Retorna -1 para indicar que o contato não foi encontrado
+    return -1; // If not found, returns -1
 }
 
-void pesquisar(agenda<pessoal, 50> &ag, int ID) { // Função para pesquisar um contato pessoal por ID
-    int aux = -1; // Inicializa uma variável auxiliar para indicar se o contato foi encontrado
-    for (int i = 0; i < ag.quantidade; i++) {
-        if (ID == ag.itens[i].ID) {
-            aux = i; // Armazena a posição do contato a ser pesquisado
-            cout << "Contato encontrado! " << endl;
-            cout << "ID: " << ag.itens[aux].ID << endl;
-            cout << "Name: " << ag.itens[aux].Name << endl;
-            cout << "SSN: " << ag.itens[aux].SSN << endl;
-            cout << "Celular: " << ag.itens[aux].Celular << endl;
+// Function to search a personal contact by ID
+void searchByID(contactBook<personal, 50> &cb, int ID) { 
+    int aux = -1;
+    for (int i = 0; i < cb.counter; i++) {
+        if (ID == cb.items[i].ID) {dd
+            aux = i;
+            cout << "Contact found! " << endl;
+            cout << "ID: " << cb.items[aux].ID << endl;
+            cout << "Name: " << cb.items[aux].name << endl;
+            cout << "SSN: " << cb.items[aux].SSN << endl;
+            cout << "Mobile phone number: " << cb.items[aux].mobilePhone << endl;
         } else {
-            cout << "Contato não encontrado";
+            cout << "Contact not found";
         }
     }
 }
 
-// Função para pesquisar um contato comercial por ID
-void pesquisar(agenda<comercial, 50> &ag, int ID) { 
-    int aux = -1; // Inicializa uma variável auxiliar para indicar se o contato foi encontrado
-    for (int i = 0; i < ag.quantidade; i++) {
-        if (ID == ag.itens[i].ID) {
-            aux = i; // Armazena a posição do contato a ser pesquisado
-            cout << "Contato encontrado! " << endl;
-            cout << "ID: " << ag.itens[aux].ID << endl;
-            cout << "Name da empresa: " << ag.itens[aux].Name_empresa << endl;
-            cout << "CNPJ: " << ag.itens[aux].CNPJ << endl;
-            cout << "Telefone comercial: " << ag.itens[aux].Tel_comercial << endl;
+// Function to search a business contact by ID
+void searchByID(contactBook<business, 50> &cb, int ID) { 
+    int aux = -1;
+    for (int i = 0; i < cb.counter; i++) {
+        if (ID == cb.items[i].ID) {
+            aux = i;
+            cout << "Contact found! " << endl;
+            cout << "ID: " << cb.items[aux].ID << endl;
+            cout << "Company name: " << cb.items[aux].companyName << endl;
+            cout << "CRN: " << cb.items[aux].CRN << endl;
+            cout << "Company phone number: " << cb.items[aux].companyPhone << endl;
         } else {
-            cout << "Contato não encontrado";
+            cout << "Contact not found";
         }
     }
 }
 
-// Exibe o menu de opções
+// Print menu
 void menu() { 
-    cout << "Digite a opção desejada \n" << endl;
-    cout << " 1. Inserir um novo item na agenda" << endl;
-    cout << " 2. Remover um item da agenda (por ID ou Name)" << endl;
-    cout << " 3. Pesquisar um item na agenda (por ID ou Name)" << endl;
-    cout << " 4. Ordenar a agenda por Name" << endl;
-    cout << " 5. Mostrar todos os itens da agenda" << endl;
-    cout << " 6. Encerrar o programa" << endl;
+    cout << "Type an option!\n" << endl;
+    cout << " 1. Save new contact" << endl;
+    cout << " 2. Delete a contact (by name or ID)" << endl;
+    cout << " 3. Search a contact (by name or ID)" << endl;
+    cout << " 4. Sort contacts by name" << endl;
+    cout << " 5. Show all contacts saved" << endl;
+    cout << " 6. Exit" << endl;
 }
 
-// Exibe o pc ligando
-void pcDesligado() { 
+void animation01() { 
     cout << "          ________________________________________________________\n";
     cout << "         /                                                         #\n";
     cout << "        |    ____________________________________________________    |\n";
@@ -211,7 +210,7 @@ void pcDesligado() {
     cout << "   `---._.-------------------------------------------------------------._.---'\n";
 }
 
-void apareceAgenda() { // Exibe a agenda abrindo
+void animation02() {
     cout << "          ________________________________________________________\n";
     cout << "         /                                                         #\n";
     cout << "        |    ____________________________________________________    |\n";
@@ -242,12 +241,12 @@ void apareceAgenda() { // Exibe a agenda abrindo
     cout << "   `---._.-------------------------------------------------------------._.---'\n";
 }
 
-void encerraPrograma() { // Exibe a tela de encerramento
+void animation03() {
     cout << "          ________________________________________________________\n";
     cout << "         /                                                         #\n";
     cout << "        |    ____________________________________________________    |\n";
     cout << "        |   |                                                   |    |\n";
-    cout << "        |   | Programa encerrando em 3 segundos...              |    |\n";
+    cout << "        |   | Program exiting in 3 seconds...                   |    |\n";
     cout << "        |   |                                                   |    |\n";
     cout << "        |   |                                                   |    |\n";
     cout << "        |   |                                                   |    |\n";
@@ -255,10 +254,10 @@ void encerraPrograma() { // Exibe a tela de encerramento
     cout << "        |   |                                                   |    |\n";
     cout << "        |   | Professor: Rafael Ballottin Martins               |    |\n";
     cout << "        |   |                                                   |    |\n";
-    cout << "        |   | Programadores: Daniel Henrique da Silva           |    |\n";
-    cout << "        |   |                Lucas dos Santos Luckow            |    |\n";
-    cout << "        |   |                Samuel Alfonso Werner Stuhlert     |    |\n";
-    cout << "        |   |                Victor Menezes Ferreira            |    |\n";
+    cout << "        |   | Developers: Daniel Henrique da Silva              |    |\n";
+    cout << "        |   |             Lucas dos Santos Luckow               |    |\n";
+    cout << "        |   |             Samuel Alfonso Werner Stuhlert        |    |\n";
+    cout << "        |   |             Victor Menezes Ferreira               |    |\n";
     cout << "        |   |___________________________________________________|    |\n";
     cout << "        |                                                            |\n";
     cout << "        #____________________________________________________________/\n";
@@ -268,49 +267,45 @@ void encerraPrograma() { // Exibe a tela de encerramento
     cout << "             _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  .-.-.`-_\n";
     cout << "          _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-`__`. .-.-.-.`-_\n";
     cout << "       _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-----. .-.-.-.-.`-_\n";
-      cout << "   _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. .---.-.-.-.`-_\n";
-      cout << "   :-------------------------------------------------------------------------:\n";
-      cout << "   `---._.-------------------------------------------------------------._.---'\n";
+    cout << "   _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. .---.-.-.-.`-_\n";
+    cout << "   :-------------------------------------------------------------------------:\n";
+    cout << "   `---._.-------------------------------------------------------------._.---'\n";
 }
 
-// Função clear
 void clear() {                
-    cout << "\033[2J\033[1;1H"; // Limpa a tela no console ANSI
+    cout << "\033[2J\033[1;1H"; // Clear the screen on ANSI console
 }
 
-// Para controlar tempo de delay entre cada número sorteado, t em segundos
 void delay(unsigned long t) { 
-    sleep(t);
+    sleep(t); // t in seconds
 }
 
-// Para voltar ao menu
-void voltarMenu(int *pmenu) { 
+void back2menu(int *pmenu) { 
     *pmenu = 0;
     string aux;
     cin.ignore();
-    cout << "\nDigite qualquer tecla para voltar ao menu\n";
+    cout << "\nPress enter to go back to the main menu\n";
     getline(cin, aux);
 }
 
 int main() {
     setlocale(LC_ALL, "Portuguese");
     int ID;
-    string Name;
-    int *pmenu = new int; // Faz alocação de memoria para um inteiro e atribui o endereço a um ponteiro pmenu
-    int *opcao = new int; // Faz alocação de memoria para um inteiro e atribui o endereço a um ponteiro opcao
+    string name;
+    int *pmenu = new int;
+    int *option = new int;
 
-    agenda<pessoal, 50> agenda_pessoal; // Cria uma agenda pessoal com um máximo de 50 contatos
-    agenda<comercial, 50> agenda_comercial; // Cria uma agenda comercial com um máximo de 50 contatos
-    contactBook_boot(agenda_pessoal);      // Inicializa a agenda pessoal
-    contactBook_boot(agenda_comercial);    // Inicializa a agenda comercial
-    personal contato_pessoal; // Cria uma struct para armazenar um contato pessoal
-    business contato_comercial; // Cria uma struct para armazenar um contato comercial
-
-    pcDesligado();
-    delay(3); // Exibe o pc desligado por 3 segundos
+    contactBook<personal, 50> personalCB; // Personal contact book with a maximum of 50 contacts
+    contactBook<business, 50> businessCB; // Business contact book with a maximum of 50 contacts
+    contactBook_boot(personalCB);
+    contactBook_boot(businessCB);
+    personal personalContact; // Struct to store a personal contact
+    business businessContact; // Struct to store a business contact
+    animation01();
+    delay(3);
     clear();
-    apareceAgenda();
-    delay(3); // Exibe a agenda abrindo por 3 segundos
+    animation02();
+    delay(3);
     clear();
 
     do {
@@ -319,161 +314,160 @@ int main() {
         cin >> *pmenu;
 
         switch (*pmenu) {
-            case 1: // Inserir um novo item na agenda
+            case 1: // Insert
                 clear();
-                cout << "1. Agenda pessoal" << endl;
-                cout << "2. Agenda comercial" << endl;
-                cin >> *opcao;
-                if (*opcao == 1) { // Inserir um contato pessoal
+                cout << "1. Agenda personal" << endl;
+                cout << "2. Agenda business" << endl;
+                cin >> *option;
+                if (*option == 1) { // Insert personal contact
                     clear();
-                    preencher(contato_pessoal);
-                    contactBook_insert(agenda_pessoal, contato_pessoal);
-                    voltarMenu(pmenu);
-                } else if (*opcao == 2) { // Inserir um contato comercial
+                    fill(personalContact);
+                    contactBook_insert(personalCB, personalContact);
+                    back2menu(pmenu);
+                } else if (*option == 2) { // Insert business contact
                     clear();
-                    preencher(contato_comercial);
-                    contactBook_insert(agenda_comercial, contato_comercial);
-                    voltarMenu(pmenu);
-                } else { // Volta para o menu
+                    fill(businessContact);
+                    contactBook_insert(businessCB, businessContact);
+                    back2menu(pmenu);
+                } else {
                     clear();
-                    voltarMenu(pmenu);
+                    back2menu(pmenu);
                 }
                 break;
     
-            case 2: // Remover um item da agenda
+            case 2: // Remove
                 clear();
-                cout << "1. Remover contato da agenda pessoal por ID" << endl;
-                cout << "2. Remover contato da agenda pessoal por Name" << endl;
-                cout << "3. Remover contato da agenda comercial por ID" << endl;
-                cout << "4. Remover contato da agenda comercial por Name" << endl;
-                cin >> *opcao;
-                if (*opcao == 1) { // Remover um contato da agenda pessoal por ID
+                cout << "1. Delete contact from personal contact book by ID" << endl;
+                cout << "2. Delete contact from personal contact book by name" << endl;
+                cout << "3. Delete contact from business contact book by ID" << endl;
+                cout << "4. Delete contact from business contact book by name" << endl;
+                cin >> *option;
+                if (*option == 1) { // Remove personal contact by ID
                     clear();
-                    cout << "Digite o ID: " << endl;
+                    cout << "Type the ID: " << endl;
                     cin >> ID;
-                    contactBook_delete(agenda_pessoal, ID);
-                    voltarMenu(pmenu);
-                } else if (*opcao == 2) { // Remover um contato da agenda pessoal por Name
+                    contactBook_delete(personalCB, ID);
+                    back2menu(pmenu);
+                } else if (*option == 2) { // Remove personal contact by name
                     clear();
                     cin.ignore();
-                    cout << "Digite o Name: " << endl;
-                    getline(cin, Name);
-                    contactBook_delete(agenda_pessoal, pesquisaName(agenda_pessoal, Name));
-                    voltarMenu(pmenu);
-                } else if (*opcao == 3) { // Remover um contato da agenda comercial por ID
+                    cout << "Type the name: " << endl;
+                    getline(cin, name);
+                    contactBook_delete(personalCB, searchByName(personalCB, Name));
+                    back2menu(pmenu);
+                } else if (*option == 3) { // Remove business contact by ID
                     clear();
-                    cout << "Digite o ID: " << endl;
+                    cout << "Type the ID: " << endl;
                     cin >> ID;
-                    contactBook_delete(agenda_comercial, ID);
-                    voltarMenu(pmenu);
-                } else if (*opcao == 4) { // Remover um contato da agenda comercial por Name_empresa
+                    contactBook_delete(businessCB, ID);
+                    back2menu(pmenu);
+                } else if (*option == 4) { // Remove business contact by name
                     clear();
                     cin.ignore();
-                    cout << "Digite o Name: " << endl;
-                    getline(cin, Name);
-                    contactBook_delete(agenda_comercial, pesquisaName(agenda_comercial, Name));
-                    voltarMenu(pmenu);
-                } else { // Volta para o menu
+                    cout << "Type the name: " << endl;
+                    getline(cin, name);
+                    contactBook_delete(businessCB, searchByName(businessCB, Name));
+                    back2menu(pmenu);
+                } else {
                     clear();
-                    voltarMenu(pmenu);
+                    back2menu(pmenu);
                 }
                 break;
     
-            case 3: // Pesquisar um contato na agenda
+            case 3: // Search contact
                 clear();
-                cout << "1. Pesquisar um contato na agenda pessoal por ID" << endl;
-                cout << "2. Pesquisar um contato na agenda pessoal por Name" << endl;
-                cout << "3. Pesquisar um contato na agenda comercial por ID" << endl;
-                cout << "4. Pesquisar um contato na agenda comercial por Name" << endl;
-                cin >> *opcao;
-                if (*opcao == 1) { // Pesquisar um contato pessoal por ID
+                cout << "1. Search personal contact by ID" << endl;
+                cout << "2. Search personal contact by name" << endl;
+                cout << "3. Search business contact by ID" << endl;
+                cout << "4. Search business contact by name" << endl;
+                cin >> *option;
+                if (*option == 1) { // Search personal contact by ID
                     clear();
-                    cout << "Digite o ID: " << endl;
+                    cout << "Type the ID: " << endl;
                     cin >> ID;
-                    pesquisar(agenda_pessoal, ID);
-                    voltarMenu(pmenu);
-                } else if (*opcao == 2) { // Pesquisar um contato pessoal por Name
+                    searchByID(personalCB, ID);
+                    back2menu(pmenu);
+                } else if (*option == 2) { // Search personal contact by name
                     clear();
                     cin.ignore();
-                    cout << "Digite o Name: " << endl;
-                    getline(cin, Name);
-                    pesquisar(agenda_pessoal, pesquisaName(agenda_pessoal, Name));
-                    voltarMenu(pmenu);
-                } else if (*opcao == 3) { // Pesquisar um contato comercial por ID
+                    cout << "Type the name: " << endl;
+                    getline(cin, name);
+                    searchByID(personalCB, searchByName(personalCB, Name));
+                    back2menu(pmenu);
+                } else if (*option == 3) { // Search business contact by ID
                     clear();
-                    cout << "Digite o ID: " << endl;
+                    cout << "Type the ID: " << endl;
                     cin >> ID;
-                    pesquisar(agenda_comercial, ID);
-                    voltarMenu(pmenu);
-                } else if (*opcao == 4) { // Pesquisar um contato comercial por Name_empresa
+                    searchByID(businessCB, ID);
+                    back2menu(pmenu);
+                } else if (*option == 4) { // Search business contact by name
                     clear();
                     cin.ignore();
-                    cout << "Digite o Name da empresa: " << endl;
-                    getline(cin, Name);
-                    pesquisar(agenda_comercial, pesquisaName(agenda_comercial, Name));
-                    voltarMenu(pmenu);
-                } else { // Volta para o menu
+                    cout << "Type the name: " << endl;
+                    getline(cin, name);
+                    searchByID(businessCB, searchByName(businessCB, Name));
+                    back2menu(pmenu);
+                } else {
                     clear();
-                    voltarMenu(pmenu);
+                    back2menu(pmenu);
                 }
                 break;
     
-            case 4: // Ordenar os contatos da agenda
+            case 4: // Sort
                 clear();
-                cout << "1. Ordenar os contatos da agenda pessoal " << endl;
-                cout << "2. Ordenar os contatos da agenda comercial " << endl;
-                cin >> *opcao;
-                if (*opcao == 1) { // Ordenar os contatos da agenda pessoal por Name
-                    contactBook_sort(agenda_pessoal);
+                cout << "1. Sort personal contacts " << endl;
+                cout << "2. Sort business contacts " << endl;
+                cin >> *option;
+                if (*option == 1) { // Sort personal contacts by name
+                    contactBook_sort(personalCB);
                     clear();
-                    voltarMenu(pmenu);
-                } else if (*opcao == 2) {
-                    contactBook_sort(agenda_comercial); // Ordenar os contatos da agenda comercial por Name_empresa
+                    back2menu(pmenu);
+                } else if (*option == 2) {
+                    contactBook_sort(businessCB); // Sort business contacts by name
                     clear();
-                    voltarMenu(pmenu);
-                } else { // Volta para o menu
+                    back2menu(pmenu);
+                } else {
                     clear();
-                    voltarMenu(pmenu);
+                    back2menu(pmenu);
                 }
                 break;
     
-            case 5: // Mostrar todos os itens da agenda
+            case 5: // Show all contacts
                 clear();
-                cout << "1. Mostrar todos os contatos da agenda pessoal" << endl;
-                cout << "2. Mostrar todos os contatos da agenda comercial" << endl;
-                cin >> *opcao;
-                if (*opcao == 1) {
+                cout << "1. Show all personal contacts saved" << endl;
+                cout << "2. Show all business contacts saved" << endl;
+                cin >> *option;
+                if (*option == 1) {
                     clear();
-                    if (agenda_pessoal.quantidade == 0) {
-                        cout << "Não há contatos salvos na agenda pessoal." << endl << endl;
-                        voltarMenu(pmenu);
+                    if (personalCB.counter == 0) {
+                        cout << "There are no contacts saved in the personal contact book." << endl << endl;
+                        back2menu(pmenu);
                     } else {
-                        cout << agenda_pessoal; // Exibe todos os contatos da agenda pessoal
-                        voltarMenu(pmenu);
+                        cout << personalCB; // Print all personal contacts saved
+                        back2menu(pmenu);
                     }
-                } else if (*opcao == 2) {
+                } else if (*option == 2) {
                     clear();
-                    if (agenda_comercial.quantidade == 0) {
-                        cout << "Não há contatos salvos na agenda comercial." << endl << endl;
-                        voltarMenu(pmenu);
+                    if (businessCB.counter == 0) {
+                        cout << "There are no contacts saved in the business contact book." << endl << endl;
+                        back2menu(pmenu);
                     } else {
-                        cout << agenda_comercial; // Exibe todos os contatos da agenda comercial
-                        voltarMenu(pmenu);
+                        cout << businessCB; // Print all business contacts saved
+                        back2menu(pmenu);
                     }
                 }
                 break;
         }
-    } while (*pmenu != 6); // Continua o loop até que a opção 6 (Encerrar o programa) seja escolhida
+    } while (*pmenu != 6);
     clear();
-    encerraPrograma();
-    delay(3); // Exibe a tela de saida por 3 segundos
+    animation03();
+    delay(3);
     clear();
-    pcDesligado();
-    delay(3); // Exibe o pc desligado por 3 segundos
+    animation01();
+    delay(3);
     clear();
 
-    delete pmenu; // Libera a memória alocada dinamicamente para o ponteiro pmenu
-    delete opcao; // Libera a memória alocada dinamicamente para o ponteiro opcao
-
-    return 0; // Encerra o programa
+    delete pmenu;
+    delete option;
+    return 0; 
 }
