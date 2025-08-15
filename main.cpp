@@ -1,9 +1,8 @@
 // Daniel Henrique da Silva, Lucas dos Santos Luckow, Samuel Alfonso Werner Stuhlert, Victor Menezes Ferreira
 #include "contactBook.h"
 #include <iostream>
-#include <locale.h>
-#include <time.h>
 #include <unistd.h>
+#include <string>
 using namespace std;
 
 // Operator overload to print all personal contacts
@@ -12,8 +11,7 @@ ostream &operator << (ostream &os, const contactBook<personal, 50> &cb) {
         os << "ID: " << cb.items[i].ID << endl;
         os << "Name: " << cb.items[i].name << endl;
         os << "SSN: " << cb.items[i].SSN << endl;
-        os << "Mobile phone: " << cb.items[i].mobilePhone << endl;
-        cout << endl;
+        os << "Mobile phone: " << cb.items[i].mobilePhone << endl << endl;
     }
     return os;
 }
@@ -24,14 +22,13 @@ ostream &operator << (ostream &os, const contactBook<business, 50> &cb) {
         os << "ID: " << cb.items[i].ID << endl;
         os << "Company name: " << cb.items[i].companyName << endl;
         os << "CRN: " << cb.items[i].CRN << endl;
-        os << "Company phone: " << cb.items[i].companyPhone << endl;
-        cout << endl;
+        os << "Company phone: " << cb.items[i].companyPhone << endl << endl;
     }
     return os;
 }
 
 // Operator overloading to compare personal contacts by name
-bool operator < (personal c1, personal c2) { 
+bool operator < (const personal &c1, const personal &c2) { 
     if (c1.name < c2.name)
         return true; 
     return false;
@@ -61,8 +58,9 @@ void fill(personal &c) {
         cin >> c.mobilePhone;
     } while (c.mobilePhone <= 0);
 
+    cin.ignore();
     cout << "Type the contact name: " << endl;
-    cin >> c.name;
+    getline(cin, c.name);
 }
 
 // Fill in contact information for business contact book
@@ -82,8 +80,9 @@ void fill(business &c) {
         cin >> c.companyPhone;
     } while (c.companyPhone <= 0);
 
+    cin.ignore();
     cout << "Type the company name: " << endl;
-    cin >> c.companyName;
+    getline(cin, c.companyName);
 }
 
 // Function to search for a personal contact by name
