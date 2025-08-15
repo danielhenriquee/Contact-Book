@@ -289,11 +289,10 @@ void back2menu(int *pmenu) {
 }
 
 int main() {
-    setlocale(LC_ALL, "Portuguese");
     int ID;
     string name;
-    int *pmenu = new int;
-    int *option = new int;
+    int *pmenu = new int; // Professor demanded to be a pointer to force students to use it properly
+    int *option = new int; // Professor demanded to be a pointer to force students to use it properly
 
     contactBook<personal, 50> personalCB; // Personal contact book with a maximum of 50 contacts
     contactBook<business, 50> businessCB; // Business contact book with a maximum of 50 contacts
@@ -316,8 +315,8 @@ int main() {
         switch (*pmenu) {
             case 1: // Insert
                 clear();
-                cout << "1. Agenda personal" << endl;
-                cout << "2. Agenda business" << endl;
+                cout << "1. Personal contact book" << endl;
+                cout << "2. Business contact book" << endl;
                 cin >> *option;
                 if (*option == 1) { // Insert personal contact
                     clear();
@@ -362,7 +361,7 @@ int main() {
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    if (contactBook_delete(personalCB, name))
+                    if (contactBook_delete(personalCB, searchByName(personalCB, name)))
                         cout << "Contact successfully deleted.\n\n";
                     else
                         cout << "Contact not found.\n\n";
@@ -371,7 +370,7 @@ int main() {
                     clear();
                     cout << "Type the ID: " << endl;
                     cin >> ID;
-                    if (contactBook_delete(businessCB, ID))
+                    if (contactBook_delete(businessCB, ID)) 
                         cout << "Contact successfully deleted.\n\n";
                     else
                         cout << "Contact not found.\n\n";
@@ -381,7 +380,7 @@ int main() {
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    if (contactBook_delete(businessCB, name))
+                    if (contactBook_delete(businessCB, searchByName(personalCB, name)))
                         cout << "Contact successfully deleted.\n\n";
                     else
                         cout << "Contact not found.\n\n";
@@ -410,7 +409,7 @@ int main() {
                     cin.ignore();
                     cout << "Type the name: " << endl;
                     getline(cin, name);
-                    searchByID(personalCB, searchByName(personalCB, Name));
+                    searchByID(personalCB, searchByName(personalCB, name));
                     back2menu(pmenu);
                 } else if (*option == 3) { // Search business contact by ID
                     clear();
